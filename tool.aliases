@@ -1,0 +1,10 @@
+#### tool.aliases start 自动替换 ####
+export PATH=$HOME/bin:$PATH
+
+alias ls='eza -hg --time-style=long-iso'
+alias cat='bat'
+alias ncdu='ncdu --color dark'
+
+# mcfly
+eval "$(mcfly init bash)"
+#### tool.aliases end ################
