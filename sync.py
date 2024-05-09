@@ -8,11 +8,11 @@ import subprocess,os,re
 files = [
     (
         '~/.zshrc', # 本地
-        '.zshrc'    # github
+        'config/.zshrc'    # github
     ), 
     (
         '~/.oh-my-zsh/themes/leon.zsh-theme',
-        'ohmyzsh/leon.zsh-theme'
+        'config/ohmyzsh/leon.zsh-theme'
     )
 ]
 
@@ -21,14 +21,14 @@ def sync_to_github():
     for local, github in files:
         local = re.sub('^~', os.getenv('HOME'), local)
         print(f'{local} ===> {github}')
-        subprocess.run(['cp', local, github]) 
+        subprocess.run(['cp', '-rf', local, github]) 
 
 def sync_to_local():
     print('从github同步到本地...')
     for local, github in files:
         local = re.sub('^~', os.getenv('HOME'), local)
         print(f'{github} ===> {local}')
-        subprocess.run(['cp', github, local])
+        subprocess.run(['cp', '-rf', github, local])
 
 
 prompt='''请选择同步方向：
