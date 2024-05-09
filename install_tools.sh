@@ -56,18 +56,13 @@ wget $QUIET -c https://github.com/BurntSushi/ripgrep/releases/download/$VERSION/
 mv ripgrep-$VERSION-x86_64-unknown-linux-musl/rg $INSTALL_DIR/
 echo "ripgrep安装结束"
 
-# mcfly
-echo "安装mcfly..."
-wget $QUIET -c https://github.com/cantino/mcfly/releases/download/v0.8.4/mcfly-v0.8.4-i686-unknown-linux-musl.tar.gz -O - | tar xz
-mv mcfly $INSTALL_DIR/
-echo "mcfly安装结束"
 
 # 更新aliases
 echo "更新aliases..."
-if [ -f ~/.bash_aliases ];then
-    sed -i '/tool.aliases start/,/tool.aliases end/ d' ~/.bash_aliases
+if [ -f ~/.mysh_config ];then
+    sed -i '/tool.aliases start/,/tool.aliases end/ d' ~/.mysh_config
 fi
-cat tool.aliases >> ~/.bash_aliases
+cat tool.aliases >> ~/.mysh_config
 
 # 提示
-echo "请手动运行： source ~/.bash_aliases"
+echo "请手动运行： source ~/.mysh_config"
